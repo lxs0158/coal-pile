@@ -1,0 +1,14 @@
+{
+  "name": "my-frontend-project",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "http-server -c-1",
+    "build": "echo 'Build process goes here'"
+  },
+  "devDependencies": {
+    "echarts": "^5.4.3",
+    "echarts-gl": "^2.0.9",
+    "http-server": "^14.1.1",
+    "jquery": "^3.7.1"
+  }
+}
