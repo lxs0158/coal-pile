@@ -8,7 +8,7 @@ var app = {};
 var option;
 
 $.getScript(
-  './simplex-noise.js'
+  './js/simplex-noise.js'
 ).done(function () {
   var noise = new SimplexNoise(Math.random);
   console.log(noise)
