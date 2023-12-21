@@ -11,11 +11,12 @@ $.getScript(
   './simplex-noise.js'
 ).done(function () {
   var noise = new SimplexNoise(Math.random);
+  console.log(noise)
   function generateData(theta, min, max) {
     var data = [];
-    for (var i = 0; i <= 20; i++) {
-      for (var j = 0; j <= 20; j++) {
-        for (var k = 0; k <= 20; k++) {
+    for (var i = 0; i <= 10; i++) {
+      for (var j = 0; j <= 10; j++) {
+        for (var k = 0; k <= 10; k++) {
           var value = noise.noise3D(i / 10, j / 10, k / 10);
           valMax = Math.max(valMax, value);
           valMin = Math.min(valMin, value);
@@ -32,7 +33,7 @@ $.getScript(
   myChart.setOption(
     (option = {
       visualMap: {
-        show: false,
+        show: true,
         min: 2,
         max: 6,
         inRange: {
@@ -54,7 +55,7 @@ $.getScript(
         }
       },
       xAxis3D: {
-        type: 'value'
+        type: 'value',
       },
       yAxis3D: {
         type: 'value'
@@ -62,6 +63,7 @@ $.getScript(
       zAxis3D: {
         type: 'value'
       },
+    
       grid3D: {
         axisLine: {
           lineStyle: { color: '#fff' }
@@ -71,7 +73,10 @@ $.getScript(
         },
         viewControl: {
           // autoRotate: true
-        }
+        },
+        boxWidth: 200,
+        boxHeight: 20,
+        boxWidth: 30
       },
       series: [
         {
