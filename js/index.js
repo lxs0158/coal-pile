@@ -109,12 +109,25 @@ $.getScript(
   // console.log(valMin, valMax);
   myChart.setOption(
     (option = {
+      title: {
+        text: "储煤场内部温度场3D展示",
+        // subtext: "Sub Title",
+        left: "center",
+        // top: "center",
+        textStyle: {
+          fontSize: 20,
+          color: '#ffffff'
+        }
+        // subtextStyle: {
+        //   fontSize: 20
+        // }
+      },
       visualMap: {
-        show: true,
+        show: false,
         min: 2,
         max: 6,
         inRange: {
-          symbolSize: [0.5, 25],
+          symbolSize: [10, 25],
           color: [
             '#313695',
             '#4575b4',
@@ -150,6 +163,7 @@ $.getScript(
         },
         viewControl: {
           // autoRotate: true
+          distance: 140
         },
         boxWidth: 200,
         boxHeight: 20,
@@ -166,13 +180,26 @@ $.getScript(
 
   //配置
   const heatmapOpt = {
+    title: {
+      text: "储煤场内部温度场横截面展示",
+      // subtext: "Sub Title",
+      left: "center",
+      // top: "center",
+      textStyle: {
+        fontSize: 20,
+        color: '#ffffff'
+      }
+      // subtextStyle: {
+      //   fontSize: 20
+      // }
+    },
     tooltip: {},
       grid: {
-        top: 10,
+        top: 35,
         bottom: 25,
         left: 150,
-          right: 10,
-          backgroundColor: '#f00'
+        right: 10,
+        backgroundColor: '#f00'
       },
       xAxis: {
           type: 'category',
@@ -187,7 +214,7 @@ $.getScript(
         },
       visualMap: {
           type: 'piecewise', //分段型
-          top: 0,
+          top: 50,
           left: 0,
           calculable: true,
           realtime: false, //拖拽时，是否实时更新
@@ -217,7 +244,7 @@ $.getScript(
   heatmapChart.setOption(heatmapOpt);
 
   yAxisData = filterYaxis(formatData, 0)
-  console.log(yAxisData)
+
   heatmapChart.setOption({
     series: [{
       name: 'Y轴截面热力图',
@@ -256,16 +283,29 @@ function filterYaxis(formatData, y){
 //初始化echarts实例
 const coordChart= echarts.init(document.getElementById("coordChart"));
 //数据
-const hours = ['12a', '0a', '1a', '2a', '3a', '4a', '5a', '6a', '7a', '8a', '9a', '10a', '11a', '12p',
-  '1p', '2p', '3p', '4p', '5p', '6p', '7p', '8p', '9p', '10p', '11p'];
-const days = ['Sat', 'Fri', 'Thu', 'Wed', 'Tue', 'Mon'];
+const hours = ['12am', '0am', '1am', '2am', '3am', '4am', '5am', '6am', '7am', '8am', '9am', '10am', '11am', '12pm',
+  '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm'];
+const days = ['星期日','星期六', '星期五', '星期四', '星期三', '星期二', '星期一'];
 //配置
 const coordOpt = {
+  title: {
+    text: "储煤场温度一周统计",
+    // subtext: "Sub Title",
+    left: "center",
+    // top: "center",
+    textStyle: {
+      fontSize: 20,
+      color: '#ffffff'
+    }
+    // subtextStyle: {
+    //   fontSize: 20
+    // }
+  },
   tooltip: {
         position: 'top'
     },
     grid: {
-        top: 0,
+        top: 30,
         bottom: 25,
         left: 100,
         right: 10,
@@ -289,7 +329,7 @@ const coordOpt = {
     },
     visualMap: {
         min: 0,
-        max: 10,
+        max: 11,
         calculable: true,
         left: 'left',
         bottom: 20,
