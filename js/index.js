@@ -230,15 +230,23 @@ if (option && typeof option === 'object') {
   myChart.setOption(option);
   
 }
-
+myChart.on('click', function (params) {
+  yAxisData = filterYaxis(formatData, params.data[1])
+  heatmapChart.setOption({
+    series: [{
+      name: 'Y轴截面热力图',
+      data: yAxisData
+    }]
+  });
+});
 function filterYaxis(formatData, y){
   var i
   const arr = []
-  console.log(formatData.length)
-  for(i=0; i<formatData.length; i++){
-    if(formatData[i][1]===y){
-      formatData[i].splice(1,1)
-      arr.push(formatData[i])
+  let deepformatData = JSON.parse(JSON.stringify(formatData));
+  for(i=0; i<deepformatData.length; i++){
+    if(deepformatData[i][1]===y){
+      deepformatData[i].splice(1,1)
+      arr.push(deepformatData[i])
     }
   }
   return arr
